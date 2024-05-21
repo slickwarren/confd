@@ -3,9 +3,9 @@ FROM registry.suse.com/bci/golang:1.20
 ARG DAPPER_HOST_ARCH
 ENV ARCH $DAPPER_HOST_ARCH
 
-RUN zypper -n install git docker vim less file curl wget
+RUN zypper clean && zypper -n install git docker vim less file curl wget
 
-ENV DAPPER_ENV REPO TAG DRONE_TAG CROSS
+ENV DAPPER_ENV REPO TAG DRONE_TAG CROSS DOCKER_PASSWORD DOCKER_USERNAME
 ENV DAPPER_SOURCE /go/src/github.com/rancher/confd/
 ENV DAPPER_OUTPUT ./bin ./dist
 ENV DAPPER_DOCKER_SOCKET true
